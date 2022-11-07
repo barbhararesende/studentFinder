@@ -10,13 +10,13 @@
 </nav>
 <section>
     <div class="container">
-        <form (ngSubmit)="create()" formGroup="formFaculdade">
+        <form (ngSubmit)="create()" formGroup="formAds">
             <h2>Anúncios</h2>
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-5">
                     <div class="campo">
                         <label for="">Título</label>
-                        <input type="text" placeholder="Escreva aqui" FormControlName="nome">
+                        <input type="text" placeholder="Escreva aqui" FormControlName="content">
                     </div>
                 </div>
                 <div class="col-5">
@@ -25,13 +25,13 @@
                         <input type="text" placeholder="Escreva aqui">
                     </div>
                 </div>
-            </div>
+            </div> -->
             
             <p class="subtitle">Email</p>
             <div class="row">
                 <div class="campo">
                     <label for="">Corpo do email</label>
-                    <textarea placeholder="Escreva aqui"></textarea>
+                    <textarea placeholder="Escreva aqui" FormControlName="content"></textarea>
                 </div>
             </div>
     
@@ -40,7 +40,7 @@
                 <div class="col-5">
                     <div class="campo">
                         <label for="">Qual curso deseja anunciar</label>
-                        <input type="text" placeholder="Escreva aqui" FormControlName="nome">
+                        <input type="text" placeholder="Escreva aqui" FormControlName="courses.name">
                     </div>
                 </div>
             </div>
