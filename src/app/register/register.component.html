@@ -12,30 +12,31 @@
             </div>
             <div class="col-5">
                 <div class="campo">
-                    <label for="">CNPJ</label>
-                    <input type="text" placeholder="Escreva aqui">
+                    <label for="">Email</label>
+                    <input type="text" placeholder="Escreva aqui" formControlName="email">
                 </div>
             </div>
         </div>
         
-        <p class="subtitle">Endereço</p>
+        <!-- <p class="subtitle">Endereço</p> -->
         <div class="row">
             <div class="col-5">
                 <div class="campo">
-                    <label for="">CEP</label>
-                    <input type="text" placeholder="Escreva aqui">
+                    <label for="">Senha</label>
+                    <input type="text" placeholder="Escreva aqui" formControlName="senha">
                 </div>
             </div>
         </div>
 
+        <p class="subtitle">Endereço</p>
         <div class="row">
             <div class="col-5">
                 <div class="campo">
                     <label for="">Endereço</label>
-                    <input type="text" placeholder="Escreva aqui">
+                    <input type="text" placeholder="Escreva aqui" formControlName="address">
                 </div>
             </div>
-            <div class="col-5">
+            <!-- <div class="col-5">
                 <div class="campo">
                     <label for="">Bairro</label>
                     <input type="text" placeholder="Escreva aqui">
@@ -58,7 +59,7 @@
                     <label for="">Complemento</label>
                     <input type="text" placeholder="Escreva aqui">
                 </div>
-            </div>
+            </div> -->
         </div>
 
         <p class="subtitle">Cursos</p>
@@ -66,13 +67,13 @@
             <div class="col-5">
                 <div class="campo">
                     <label for="">Nome do curso</label>
-                    <input type="text" placeholder="Escreva aqui">
+                    <input type="text" placeholder="Escreva aqui" formControlName="name">
                 </div>
             </div>
             <div class="col-5">
                 <div class="campo">
                     <label for="">Área de interesse</label>
-                    <input type="text" placeholder="Escreva aqui">
+                    <input type="text" placeholder="Escreva aqui" formControlName="area">
                 </div>
             </div>
         </div>
@@ -89,7 +90,7 @@
                 <tr>
                     <td>Big Data no agronegócio</td>
                     <td>Tecnologia</td>
-                    <td>excluir</td>
+                    <td class=" btn btn-delete">excluir</td>
                 </tr>
             </tbody>
         </table>

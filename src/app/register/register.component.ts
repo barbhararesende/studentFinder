@@ -8,14 +8,19 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
 
+  courses: any;
+
   formFaculdade = new FormGroup({
     nome: new FormControl('',{}),
-    tipo: new FormControl('',{}),
-    genero: new FormControl('',{}),
-    dataNascimento: new FormControl('',{}),
-    observacao: new FormControl('',{}),
-    inativo: new FormControl('',{})
+    email: new FormControl('',{}),
+    senha: new FormControl('',{}),
+    address: new FormControl('',{}),
+    courses: new FormControl({
+      name:['',{} ],
+      area:['',{} ],
+    })
   })
+
 
   constructor() { }
 
