@@ -68,6 +68,16 @@
     }
 }
 
+.btn-delete{
+    background: #e94921;
+    color: #fff;
+    transition: all .2s;
+
+    &:hover{
+    background: #f3310f;
+    }
+}
+
 .row{
     width: 100%;
     display: flex;
