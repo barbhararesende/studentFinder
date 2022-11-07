@@ -1,1 +1,51 @@
-<p>ads works!</p>
+<nav>
+    <div class="container">
+        <img src="../../assets/img/logo.png" alt="">
+        <ul>
+            <li><a routerLink="/home">Home</a></li>
+            <li><a routerLink="/register">Configurações</a></li>
+            <li><a routerLink="">Sair</a></li>
+        </ul>
+    </div>
+</nav>
+<section>
+    <div class="container">
+        <form (ngSubmit)="create()" formGroup="formFaculdade">
+            <h2>Anúncios</h2>
+            <div class="row">
+                <div class="col-5">
+                    <div class="campo">
+                        <label for="">Título</label>
+                        <input type="text" placeholder="Escreva aqui" FormControlName="nome">
+                    </div>
+                </div>
+                <div class="col-5">
+                    <div class="campo">
+                        <label for="">Assunto</label>
+                        <input type="text" placeholder="Escreva aqui">
+                    </div>
+                </div>
+            </div>
+            
+            <p class="subtitle">Email</p>
+            <div class="row">
+                <div class="campo">
+                    <label for="">Corpo do email</label>
+                    <textarea placeholder="Escreva aqui"></textarea>
+                </div>
+            </div>
+    
+            <p class="subtitle">Cursos</p>
+            <div class="row">
+                <div class="col-5">
+                    <div class="campo">
+                        <label for="">Qual curso deseja anunciar</label>
+                        <input type="text" placeholder="Escreva aqui" FormControlName="nome">
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn btn-primary" type="submit">Criar</button>
+        </form>
+    </div>
+</section>

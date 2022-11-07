@@ -36,6 +36,21 @@
             color: #888888;
         }
     }
+
+    textarea{
+        width: 100%;
+        min-height: 64px;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 18px;
+        padding: 12px;
+        border-radius: 8px;
+        border: 1px solid #C6C6C6;
+
+        &::placeholder{
+            color: #888888;
+        }
+    }
 }
 
 .btn{
