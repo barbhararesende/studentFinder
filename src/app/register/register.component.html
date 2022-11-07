@@ -1,13 +1,13 @@
 <div class="register">
     <div class="capa"></div>
-    <form action="">
+    <form (ngSubmit)="register()" [formGroup]="formFaculdade">
         <h2>Registre sua <br/>instituição no StudentFinder</h2>
         <p class="subtitle">Informações gerais</p>
         <div class="row">
             <div class="col-5">
                 <div class="campo">
                     <label for="">Nome da instituição</label>
-                    <input type="text" placeholder="Escreva aqui">
+                    <input type="text" placeholder="Escreva aqui" formControlName="nome">
                 </div>
             </div>
             <div class="col-5">
@@ -95,6 +95,6 @@
         </table>
 
         
-        <button class="btn btn-primary">Entrar</button>
+        <button class="btn btn-primary" type="submit">Registrar</button>
     </form>
 </div>
