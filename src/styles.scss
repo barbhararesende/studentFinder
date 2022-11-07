@@ -1,0 +1,81 @@
+/* You can add global styles to this file, and also import other style files */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+.campo{
+    width: 100%;
+
+    label{
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 18px;
+        color: #1B1B1B;
+        margin-bottom: 4px;
+        display: block;
+    }
+
+    input{
+        width: 100%;
+        height: 48px;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 18px;
+        padding: 0px 12px;
+        border-radius: 8px;
+        border: 1px solid #C6C6C6;
+
+        &:focus{
+            outline: red;
+        }
+
+        &::placeholder{
+            color: #888888;
+        }
+    }
+}
+
+.btn{
+    line-height: 48px;
+    padding: 0px 32px;
+    border-radius: 8px;
+    border: none;
+    background: none;
+    font-size: 16px;
+}
+
+.btn-primary{
+    background: #4472E9;
+    color: #fff;
+    transition: all .2s;
+
+    &:hover{
+        background: #345cc0;
+    }
+}
+
+.btn-secondary{
+    border: 1px solid #4472E9;
+    color: #4472E9;
+    transition: all .2s;
+
+    &:hover{
+        border-color: #345cc0;
+        color: #345cc0;
+    }
+}
+
+.row{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.col-5{
+    width: calc(50% - 8px);
+}
