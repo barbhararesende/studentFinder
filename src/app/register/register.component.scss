@@ -36,6 +36,18 @@
         }
     }
 
+    .title-between {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 32px;
+
+        p{
+            margin: 0px;
+        }
+    }
+
     table{
         width: 100%;
         border-spacing: 0px;

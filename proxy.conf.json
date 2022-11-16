@@ -1,0 +1,6 @@
+{
+  "/api": {
+    "target": "https://ancient-wave-65748.herokuapp.com/",
+    "secure": false
+  }
+}

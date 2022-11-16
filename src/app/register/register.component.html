@@ -1,13 +1,13 @@
 <div class="register">
     <div class="capa"></div>
-    <form (ngSubmit)="register()" formGroup="formFaculdade">
+    <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
         <h2>Registre sua <br/>instituição no StudentFinder</h2>
         <p class="subtitle">Informações gerais</p>
         <div class="row">
             <div class="col-5">
                 <div class="campo">
                     <label for="">Nome da instituição</label>
-                    <input type="text" placeholder="Escreva aqui" FormControlName="nome">
+                    <input type="text" placeholder="Escreva aqui" formControlName="nome">
                 </div>
             </div>
             <div class="col-5">
@@ -62,23 +62,31 @@
             </div> -->
         </div>
 
-        <p class="subtitle">Cursos</p>
-        <div class="row">
-            <div class="col-5">
-                <div class="campo">
-                    <label for="">Nome do curso</label>
-                    <input type="text" placeholder="Escreva aqui" formControlName="courses.name">
-                </div>
-            </div>
-            <div class="col-5">
-                <div class="campo">
-                    <label for="">Área de interesse</label>
-                    <input type="text" placeholder="Escreva aqui" formControlName="courses.area">
-                </div>
-            </div>
+        <div class="title-between">
+            <p class="subtitle">Cursos</p>
+            <button type="button" (click)="addCourses()" class="btn btn-primary">Add</button>
         </div>
 
-        <table>
+        <div formArrayName="courses">
+            <div *ngFor="let c of courses.controls; let i=index" class="row">
+                <div class="col-5" [formGroupName]="i">
+                    <div class="campo">
+                        <label for="">Nome do curso</label>
+                        <input type="text" placeholder="Escreva aqui" formControlName="name">
+                    </div>
+                </div>
+                <div class="col-5" [formGroupName]="i">
+                    <div class="campo">
+                        <label for="">Área de interesse</label>
+                        <input type="text" placeholder="Escreva aqui" formControlName="area">
+                    </div>
+                </div>
+                <button type="button" (click)="addCoursesTable()" class="btn btn-primary">play</button>
+            </div>
+
+        </div>
+
+        <table formArrayName="courses">
             <thead>
                 <tr>
                     <th>Curso</th>
@@ -87,15 +95,15 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Big Data no agronegócio</td>
-                    <td>Tecnologia</td>
+                <tr *ngFor="let c of table">
+                    <td>{{c.name}}</td>
+                    <td>{{c.area}}</td>
                     <td class=" btn btn-delete">excluir</td>
                 </tr>
             </tbody>
         </table>
 
         
-        <button class="btn btn-primary" type="submit">Registrar</button>
+        <button class="btn btn-primary">Registrar</button>
     </form>
 </div>

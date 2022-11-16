@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder } from '@angular/forms'
 
 @Component({
   selector: 'app-register',
@@ -8,27 +10,72 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
 
-  courses: any;
+  editForm: FormGroup;
+  
+  apiURL : any;
+  table: any;
 
-  formFaculdade = new FormGroup({
-    nome: new FormControl('',{}),
-    email: new FormControl('',{}),
-    senha: new FormControl('',{}),
-    address: new FormControl('',{}),
-    courses: new FormControl({
-      name:['',{} ],
-      area:['',{} ],
+  constructor(private formBuilder: FormBuilder, private http : HttpClient) { 
+    this.apiURL = 'https://ancient-wave-65748.herokuapp.com';
+    this.editForm = this.formBuilder.group({
+      nome: ['',  []],
+      email: ['', []],
+      senha: ['', []],
+      address: ['', []],
+      courses: this.formBuilder.array([])
     })
-  })
-
-
-  constructor() { }
-
+  }
+  
   ngOnInit(): void {
-  }
-
-  register(): void{
     
+    this.http.get(`${ this.apiURL }/university`)
+            .subscribe(
+              resultado => {
+                console.log(resultado)
+              },
+              erro => {
+                if(erro.status == 404) {
+                  console.log('Produto não localizado.');
+                }
+              }
+            );
   }
 
+  onSubmit(): void{
+    console.log(this.editForm.value)
+  //   this.http.post(`https://ancient-wave-65748.herokuapp.com/university`, teste)
+  //           .subscribe(
+  //             resultado => {
+  //               console.log(resultado)
+  //             },
+  //             erro => {
+  //               if(erro.status == 400) {
+  //                 console.log(erro);
+  //               }
+  //             }
+  //           );
+  // }
+
+  }
+
+  get courses() : FormArray {
+    return this.editForm.get("courses") as FormArray
+  }
+
+  newCourse(): FormGroup {
+   return this.formBuilder.group({
+     name: '',
+     area: '',
+   })
+  }
+  
+  addCourses(): void{
+    this.courses.push(this.newCourse());
+  }
+
+  addCoursesTable(): void{
+    this.table = this.editForm.get('courses')?.value
+    console.log(this.table)
+  }
+  
 }
