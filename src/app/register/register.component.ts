@@ -16,9 +16,10 @@ export class RegisterComponent implements OnInit {
   table: any;
 
   constructor(private formBuilder: FormBuilder, private http : HttpClient) { 
-    this.apiURL = 'https://ancient-wave-65748.herokuapp.com';
+    //this.apiURL = 'https://ancient-wave-65748.herokuapp.com';
+    this.apiURL = 'http://127.0.0.1:8000';
     this.editForm = this.formBuilder.group({
-      nome: ['',  []],
+      name: ['',  []],
       email: ['', []],
       senha: ['', []],
       address: ['', []],
@@ -27,8 +28,10 @@ export class RegisterComponent implements OnInit {
   }
   
   ngOnInit(): void {
+    let headers = new Headers({ 'Access-Control-Allow-Origin': '*' });
+    const options: any = { headers: headers };
     
-    this.http.get(`${ this.apiURL }/university`)
+    this.http.get(`${ this.apiURL }/university`, options)
             .subscribe(
               resultado => {
                 console.log(resultado)
@@ -42,19 +45,21 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(): void{
+    let headers = new Headers({ 'Access-Control-Allow-Origin': '*' });
+    const options: any = { headers: headers };
     console.log(this.editForm.value)
-  //   this.http.post(`https://ancient-wave-65748.herokuapp.com/university`, teste)
-  //           .subscribe(
-  //             resultado => {
-  //               console.log(resultado)
-  //             },
-  //             erro => {
-  //               if(erro.status == 400) {
-  //                 console.log(erro);
-  //               }
-  //             }
-  //           );
-  // }
+    this.http.post(`${ this.apiURL }/university`, this.editForm.value)
+            .subscribe(
+              resultado => {
+                console.log(resultado)
+              },
+              erro => {
+                if(erro.status == 400) {
+                  console.log(erro);
+                }
+              }
+            );
+  
 
   }
 
