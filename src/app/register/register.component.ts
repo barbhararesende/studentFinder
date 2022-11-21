@@ -11,7 +11,7 @@ import { StudentService } from './student.service';
 export class RegisterComponent implements OnInit {
 
   editForm: FormGroup;
-  editForm2: FormGroup;
+  editAds: FormGroup;
   apiURL : any;
   table: any;
   student: any;
@@ -27,7 +27,7 @@ export class RegisterComponent implements OnInit {
       courses: this.formBuilder.array([])
     })
 
-    this.editForm2 = this.formBuilder.group({
+    this.editAds = this.formBuilder.group({
       total_students: [0,  []],
       content: ['',  []],
       courses: this.courses,
@@ -40,20 +40,6 @@ export class RegisterComponent implements OnInit {
     let headers = new Headers({ 'Access-Control-Allow-Origin': '*' });
     const options: any = { headers: headers };
     
-    this.http.get(`${ this.apiURL }/university`, options)
-            .subscribe(
-              resultado => {
-                console.log(resultado)
-              },
-              erro => {
-                if(erro.status == 404) {
-                  console.log('Produto não localizado.');
-                }
-              }
-            );
-
-            this.student = await this.StudentService.getStudent('tecnologia').toPromise();
-            console.log(this.student)
   }
 
   saveUniversity(): void{
@@ -71,34 +57,43 @@ export class RegisterComponent implements OnInit {
   onSubmit2(): void{
     let headers = new Headers({ 'Access-Control-Allow-Origin': '*' });
     const options: any = { headers: headers };
-    // this.editForm2.setValue({student: this.student})
-    console.log(this.editForm2.value)
-
-    // this.http.post(`${ this.apiURL }/ads`, this.editForm2.value)
-    //         .subscribe(
-    //           resultado => {
-    //             console.log(resultado)
-    //           },
-    //           erro => {
-    //             if(erro.status == 400) {
-    //               console.log(erro);
-    //             }
-    //           }
-    //         );
-  
+    this.http.post(`${ this.apiURL }/ads`, this.editAds.value)
+            .subscribe(
+              resultado => {
+                console.log(resultado)
+              },
+              erro => {
+                if(erro.status == 400) {
+                  console.log(erro);
+                }
+              }
+            ); 
 
   }
 
-  save(): void{
+  async save(): Promise<void>{
     let headers = new Headers({ 'Access-Control-Allow-Origin': '*' });
     const options: any = { headers: headers };
 
-    this.saveUniversity()
-    this.newUniversity()
-    
     // this.saveUniversity()
+    this.newUniversity()
+    this.student = await this.StudentService.getStudent('tecnologia').toPromise();
+    this.editAds.patchValue({total_students: this.student.length});
+    this.student.map((s:any) => {
+      this.students.push(
+        this.formBuilder.group({
+          name: s.name,
+          email: s.email,
+          interest: s.interest
+        })
+      )
+    })   
+    this.onSubmit2()
   }
 
+  get students() : FormArray {
+    return this.editAds.get("student") as FormArray
+  }
 
   get courses() : FormArray {
     return this.editForm.get("courses") as FormArray
@@ -121,7 +116,7 @@ export class RegisterComponent implements OnInit {
   }
 
   get university() : FormArray {
-    return this.editForm2.get("university") as FormArray
+    return this.editAds.get("university") as FormArray
   }
 
   newUniversity(): void{
@@ -131,8 +126,7 @@ export class RegisterComponent implements OnInit {
         email: this.editForm.get("email")?.value,
       })
     )
-   }
-  
+  } 
   
 }
   
