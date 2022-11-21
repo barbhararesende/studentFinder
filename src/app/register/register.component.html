@@ -106,4 +106,66 @@
         
         <button class="btn btn-primary">Registrar</button>
     </form>
+
+    <form [formGroup]="editForm2" (ngSubmit)="onSubmit2()">
+        <h2>Anúncios</h2>
+        <div class="row">
+            <div class="col-5">
+                <div class="campo">
+                    <label for="">Título</label>
+                    <input type="text" placeholder="Escreva aqui" FormControlName="content">
+                </div>
+            </div>
+            <div class="col-5">
+                <div class="campo">
+                    <label for="">Assunto</label>
+                    <input type="text" placeholder="Escreva aqui">
+                </div>
+            </div>
+        </div>
+        
+        <p class="subtitle">Email</p>
+        <div class="row">
+            <div class="campo">
+                <label for="">Corpo do email</label>
+                <textarea placeholder="Escreva aqui" FormControlName="content"></textarea>
+            </div>
+        </div>
+
+        <p class="subtitle">Cursos</p>
+        <div class="row">
+            <div class="col-5">
+                <div class="campo">
+                    <label for="">Qual curso deseja anunciar</label>
+                    <input type="text" placeholder="Escreva aqui" FormControlName="courses.name">
+                </div>
+            </div>
+        </div>
+
+        <div class="title-between">
+            <p class="subtitle">university</p>
+            <button type="button" (click)="addUniversity()" class="btn btn-primary">Add</button>
+        </div>
+
+        <div formArrayName="university">
+            <div *ngFor="let c of university.controls; let i=index" class="row">
+                <div class="col-5" [formGroupName]="i">
+                    <div class="campo">
+                        <label for="">Nome</label>
+                        <input type="text" placeholder="Escreva aqui" formControlName="name">
+                    </div>
+                </div>
+                <div class="col-5" [formGroupName]="i">
+                    <div class="campo">
+                        <label for="email">Email</label>
+                        <input type="text" placeholder="Escreva aqui" formControlName="email">
+                    </div>
+                </div>
+                <!-- <button type="button" (click)="addCoursesTable()" class="btn btn-primary">play</button> -->
+            </div>
+
+        </div>
+
+        <button class="btn btn-primary" type="submit">Criar</button>
+    </form>
 </div>
