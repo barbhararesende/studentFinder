@@ -54,13 +54,14 @@ export class RegisterComponent implements OnInit {
   //   // this.student = await this.StudentService.getStudent('tecnologia');
   // }
 
-  onSubmit2(): void{
+  saveAds(): void{
     let headers = new Headers({ 'Access-Control-Allow-Origin': '*' });
     const options: any = { headers: headers };
     this.http.post(`${ this.apiURL }/ads`, this.editAds.value)
             .subscribe(
               resultado => {
-                console.log(resultado)
+                alert(`Seu anúncio foi impulsionado com sucesso para ${this.editAds.get('total_students')?.value}`)
+                window.history.back();
               },
               erro => {
                 if(erro.status == 400) {
@@ -75,9 +76,10 @@ export class RegisterComponent implements OnInit {
     let headers = new Headers({ 'Access-Control-Allow-Origin': '*' });
     const options: any = { headers: headers };
 
-    // this.saveUniversity()
+    this.saveUniversity()
     this.newUniversity()
-    this.student = await this.StudentService.getStudent('tecnologia').toPromise();
+    let interest = this.courses.value[0]?.area
+    this.student = await this.StudentService.getStudent(interest.toLowerCase()).toPromise();
     this.editAds.patchValue({total_students: this.student.length});
     this.student.map((s:any) => {
       this.students.push(
@@ -88,7 +90,7 @@ export class RegisterComponent implements OnInit {
         })
       )
     })   
-    this.onSubmit2()
+    this.saveAds()
   }
 
   get students() : FormArray {

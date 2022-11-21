@@ -31,10 +31,10 @@
     <div class="container">
         <img src="../../assets/img/logo.png" alt="">
         <ul>
-            <li><a href="">Home</a></li>
-            <li><a href="">Saiba mais</a></li>
-            <li><a href="">Teste Grátis</a></li>
-            <li><a href="">Registre sua faculdade</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="#s_saiba">Saiba mais</a></li>
+            <li><a href="#s_teste">Teste Grátis</a></li>
+            <li><a href="#s_registre">Registre sua faculdade</a></li>
             <li><a href="" class="btn">Entrar</a></li>
         </ul>
     </div>
@@ -43,7 +43,7 @@
 <header>
     <div class="container">
         <h1>Encontre alunos interessados nos seus cursos</h1>
-        <a href="" class="btn">Ver documentação</a>
+        <a href="https://app.swaggerhub.com/apis/querino/student-finder/1.0.0" target="_blank" class="btn">Ver documentação</a>
     </div>
 </header>
 
@@ -64,7 +64,7 @@
         <div class="text">
             <h2>Faça um teste grátis</h2>
             <p>Cadastre sua faculdade, escreva o conteúdo do anúncio que enviamos para os alunos interessados na área de conhecimento do curso.</p>
-            <a href="" class="btn">De graça até injeção na testa</a>
+            <a [routerLink]="['/register']" class="btn">De graça até injeção na testa</a>
         </div>
     </div>
 </section>
