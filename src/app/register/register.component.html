@@ -1,171 +1,122 @@
 <div class="register">
     <div class="capa"></div>
-    <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
-        <h2>Registre sua <br/>instituição no StudentFinder</h2>
-        <p class="subtitle">Informações gerais</p>
-        <div class="row">
-            <div class="col-5">
-                <div class="campo">
-                    <label for="">Nome da instituição</label>
-                    <input type="text" placeholder="Escreva aqui" formControlName="name">
-                </div>
-            </div>
-            <!-- <div class="col-5">
-                <div class="campo">
-                    <label for="">Email</label>
-                    <input type="text" placeholder="Escreva aqui" formControlName="email">
-                </div>
-            </div> -->
-        </div>
-        <p class="subtitle">Endereço</p>
-        <div class="row">
-            <div class="col-5">
-                <div class="campo">
-                    <label for="">Endereço</label>
-                    <input type="text" placeholder="Escreva aqui" formControlName="address">
-                </div>
-            </div>
-        </div>
-        <!-- <p class="subtitle">Endereço</p> -->
-        <!-- <div class="row">
-            <div class="col-5">
-                <div class="campo">
-                    <label for="">Senha</label>
-                    <input type="text" placeholder="Escreva aqui" formControlName="senha">
-                </div>
-            </div>
-        </div> -->
-
-        
-            <!-- <div class="col-5">
-                <div class="campo">
-                    <label for="">Bairro</label>
-                    <input type="text" placeholder="Escreva aqui">
-                </div>
-            </div>
-            <div class="col-5">
-                <div class="campo">
-                    <label for="">Cidade</label>
-                    <input type="text" placeholder="Escreva aqui">
-                </div>
-            </div>
-            <div class="col-5">
-                <div class="campo">
-                    <label for="">Estado</label>
-                    <input type="text" placeholder="Escreva aqui">
-                </div>
-            </div>
-            <div class="col-5">
-                <div class="campo">
-                    <label for="">Complemento</label>
-                    <input type="text" placeholder="Escreva aqui">
-                </div>
-            </div> -->
-
-        <div class="title-between">
-            <p class="subtitle">Cursos</p>
-            <button type="button" (click)="addCourses()" class="btn btn-primary">Add</button>
-        </div>
-
-        <div formArrayName="courses">
-            <div *ngFor="let c of courses.controls; let i=index" class="row">
-                <div class="col-5" [formGroupName]="i">
+    <div class="formulario">
+        <form [formGroup]="editForm">
+            <h2>Faça um teste grátis</h2>
+            <p class="subtitle">Sobre a instituição</p>
+            <div class="row">
+                <div class="col-5">
                     <div class="campo">
-                        <label for="">Nome do curso</label>
+                        <label for="">Nome da instituição</label>
                         <input type="text" placeholder="Escreva aqui" formControlName="name">
                     </div>
                 </div>
-                <div class="col-5" [formGroupName]="i">
+                <div class="col-5">
                     <div class="campo">
-                        <label for="">Área de interesse</label>
-                        <input type="text" placeholder="Escreva aqui" formControlName="area">
-                    </div>
-                </div>
-                <button type="button" (click)="addCoursesTable()" class="btn btn-primary">play</button>
-            </div>
-
-        </div>
-
-        <table formArrayName="courses">
-            <thead>
-                <tr>
-                    <th>Curso</th>
-                    <th>Área de interesse</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let c of table">
-                    <td>{{c.name}}</td>
-                    <td>{{c.area}}</td>
-                    <td class=" btn btn-delete">excluir</td>
-                </tr>
-            </tbody>
-        </table>
-
-        
-        <button class="btn btn-primary">Registrar</button>
-    </form>
-
-    <form [formGroup]="editForm2" (ngSubmit)="onSubmit2()">
-        <h2>Anúncios</h2>
-        <div class="row">
-            <div class="col-5">
-                <div class="campo">
-                    <label for="">Título</label>
-                    <input type="text" placeholder="Escreva aqui" FormControlName="content">
-                </div>
-            </div>
-            <div class="col-5">
-                <div class="campo">
-                    <label for="">Assunto</label>
-                    <input type="text" placeholder="Escreva aqui">
-                </div>
-            </div>
-        </div>
-        
-        <p class="subtitle">Email</p>
-        <div class="row">
-            <div class="campo">
-                <label for="">Corpo do email</label>
-                <textarea placeholder="Escreva aqui" FormControlName="content"></textarea>
-            </div>
-        </div>
-
-        <p class="subtitle">Cursos</p>
-        <div class="row">
-            <div class="col-5">
-                <div class="campo">
-                    <label for="">Qual curso deseja anunciar</label>
-                    <input type="text" placeholder="Escreva aqui" FormControlName="courses.name">
-                </div>
-            </div>
-        </div>
-
-        <div class="title-between">
-            <p class="subtitle">university</p>
-            <button type="button" (click)="addUniversity()" class="btn btn-primary">Add</button>
-        </div>
-
-        <div formArrayName="university">
-            <div *ngFor="let c of university.controls; let i=index" class="row">
-                <div class="col-5" [formGroupName]="i">
-                    <div class="campo">
-                        <label for="">Nome</label>
+                        <label for="">Email</label>
                         <input type="text" placeholder="Escreva aqui" formControlName="name">
                     </div>
                 </div>
-                <div class="col-5" [formGroupName]="i">
+            </div>
+            <div class="row">
+                <div class="col-5">
                     <div class="campo">
-                        <label for="email">Email</label>
-                        <input type="text" placeholder="Escreva aqui" formControlName="email">
+                        <label for="">Endereço</label>
+                        <input type="text" placeholder="Escreva aqui" formControlName="address">
                     </div>
                 </div>
-                <!-- <button type="button" (click)="addCoursesTable()" class="btn btn-primary">play</button> -->
             </div>
 
-        </div>
-
-        <button class="btn btn-primary" type="submit">Criar</button>
-    </form>
+            <div class="title-between">
+                <p class="subtitle">Cursos</p>
+                <button type="button" (click)="addCourses()" class="btn btn-secondary">Adicionar curso</button>
+            </div>
+    
+            <table formArrayName="courses">
+                <thead>
+                    <tr>
+                        <th>Curso</th>
+                        <th>Área de interesse</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let c of courses.controls; let i=index">
+                        <td [formGroupName]="i">
+                            <input type="text" placeholder="Escreva aqui" formControlName="name">
+                        </td>
+                        <td [formGroupName]="i">
+                            <input type="text" placeholder="Escreva aqui" formControlName="area">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <!-- <button class="btn btn-primary">Registrar</button> -->
+        </form>
+    
+        <form [formGroup]="editForm2" (ngSubmit)="save()">
+            <p class="subtitle">Sobre o anúncio</p>
+            <!-- <div class="row">
+                <div class="col-5">
+                    <div class="campo">
+                        <label for="">Título</label>
+                        <input type="text" placeholder="Escreva aqui" FormControlName="content">
+                    </div>
+                </div>
+                <div class="col-5">
+                    <div class="campo">
+                        <label for="">Assunto</label>
+                        <input type="text" placeholder="Escreva aqui">
+                    </div>
+                </div>
+            </div> -->
+            
+            <!-- <p class="subtitle">Email</p> -->
+            <div class="row">
+                <div class="campo">
+                    <label for="">Corpo do email</label>
+                    <textarea placeholder="Escreva aqui" FormControlName="content"></textarea>
+                </div>
+            </div>
+    
+            <!-- <p class="subtitle">Cursos</p>
+            <div class="row">
+                <div class="col-5">
+                    <div class="campo">
+                        <label for="">Qual curso deseja anunciar</label>
+                        <input type="text" placeholder="Escreva aqui" FormControlName="courses.name">
+                    </div>
+                </div>
+            </div> -->
+    
+            <!-- <div class="title-between">
+                <p class="subtitle">university</p>
+                <button type="button" (click)="addUniversity()" class="btn btn-primary">Add</button>
+            </div>
+    
+            <div formArrayName="university">
+                <div *ngFor="let c of university.controls; let i=index" class="row">
+                    <div class="col-5" [formGroupName]="i">
+                        <div class="campo">
+                            <label for="">Nome</label>
+                            <input type="text" placeholder="Escreva aqui" formControlName="name">
+                        </div>
+                    </div>
+                    <div class="col-5" [formGroupName]="i">
+                        <div class="campo">
+                            <label for="email">Email</label>
+                            <input type="text" placeholder="Escreva aqui" formControlName="email">
+                        </div>
+                    </div>
+                </div>
+    
+            </div> -->
+    
+            <button class="btn btn-primary" type="submit">Criar</button>
+        </form>
+    </div>
 </div>
+
+
+

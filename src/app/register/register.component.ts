@@ -56,22 +56,10 @@ export class RegisterComponent implements OnInit {
             console.log(this.student)
   }
 
-  onSubmit(): void{
+  saveUniversity(): void{
     let headers = new Headers({ 'Access-Control-Allow-Origin': '*' });
     const options: any = { headers: headers };
-    console.log(this.editForm2.value)
-    // this.http.post(`${ this.apiURL }/university`, this.editForm.value)
-    //         .subscribe(
-    //           resultado => {
-    //             console.log(resultado)
-    //           },
-    //           erro => {
-    //             if(erro.status == 400) {
-    //               console.log(erro);
-    //             }
-    //           }
-    //         );
-
+    this.http.post(`${ this.apiURL }/university`, this.editForm.value).subscribe();
   }
 
   // getStudents(): void {
@@ -86,7 +74,6 @@ export class RegisterComponent implements OnInit {
     // this.editForm2.setValue({student: this.student})
     console.log(this.editForm2.value)
 
-    this.teste()
     // this.http.post(`${ this.apiURL }/ads`, this.editForm2.value)
     //         .subscribe(
     //           resultado => {
@@ -102,17 +89,19 @@ export class RegisterComponent implements OnInit {
 
   }
 
+  save(): void{
+    let headers = new Headers({ 'Access-Control-Allow-Origin': '*' });
+    const options: any = { headers: headers };
+
+    this.saveUniversity()
+    this.newUniversity()
+    
+    // this.saveUniversity()
+  }
+
 
   get courses() : FormArray {
     return this.editForm.get("courses") as FormArray
-  }
-
-  get university() : FormArray {
-    return this.editForm2.get("university") as FormArray
-  }
-
-  teste(): void{
-    console.log(this.student)
   }
 
   newCourse(): FormGroup {
@@ -122,17 +111,6 @@ export class RegisterComponent implements OnInit {
    })
   }
 
-  newUniversity(): FormGroup {
-    return this.formBuilder.group({
-      name: '',
-      email: '',
-    })
-   }
-
-  addUniversity(): void{
-    this.university.push(this.newUniversity());
-  }
-  
   addCourses(): void{
     this.courses.push(this.newCourse());
   }
@@ -141,6 +119,20 @@ export class RegisterComponent implements OnInit {
     this.table = this.editForm.get('courses')?.value
     console.log(this.table)
   }
+
+  get university() : FormArray {
+    return this.editForm2.get("university") as FormArray
+  }
+
+  newUniversity(): void{
+    this.university.push(
+      this.formBuilder.group({
+        name: this.editForm.get("name")?.value,
+        email: this.editForm.get("email")?.value,
+      })
+    )
+   }
+  
   
 }
   
